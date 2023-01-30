@@ -12,7 +12,7 @@ export default function Cylinder(props) {
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
         <mesh>
-          <boxGeometry args={[1, 1, 1]} />
+          <cylinderGeometry args={[1, 1, 5]} />
           <meshStandardMaterial color={"orange"} />
         </mesh>
       </Canvas>
