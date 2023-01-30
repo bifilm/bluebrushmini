@@ -71,7 +71,11 @@ export default function Snake(props) {
             )}
           </TorusKnot>
 
-          <Box args={[1.25, 5, 0.002]}>
+          <Box
+            args={[1.25, 1.25, 0.002]}
+            position={[0, 1, 0]}
+            rotation={[0, Math.PI / 6, 0]}
+          >
             <meshStandardMaterial
               color="red"
               transparent={boxVisible}
@@ -83,7 +87,27 @@ export default function Snake(props) {
               color="black"
             />
           </Box>
-          <Box args={[8, 0.002, 1.3]}>
+          <Box
+            args={[1.25, 1.25, 0.002]}
+            position={[0, -1, 0]}
+            rotation={[0, -Math.PI / 6, 0]}
+          >
+            <meshStandardMaterial
+              color="red"
+              transparent={boxVisible}
+              opacity={0.0}
+            />
+            <Edges
+              scale={1}
+              threshold={80} // Display edges only when the angle between two faces exceeds this value (default=15 degrees)
+              color="black"
+            />
+          </Box>
+          <Box
+            args={[2, 0.002, 1.3]}
+            position={[-3, 0, 0]}
+            rotation={[-Math.PI / 6, 0, 0]}
+          >
             <meshStandardMaterial
               color="blue"
               transparent={boxVisible}
@@ -95,6 +119,24 @@ export default function Snake(props) {
               color="black"
             />
           </Box>
+
+          <Box
+            args={[2, 0.002, 1.3]}
+            position={[3, 0, 0]}
+            rotation={[Math.PI / 6, 0, 0]}
+          >
+            <meshStandardMaterial
+              color="blue"
+              transparent={boxVisible}
+              opacity={0}
+            />
+            <Edges
+              scale={1}
+              threshold={80} // Display edges only when the angle between two faces exceeds this value (default=15 degrees)
+              color="black"
+            />
+          </Box>
+
           <gridHelper
             args={[10, 10]}
             position={[0, -3, 0]}
