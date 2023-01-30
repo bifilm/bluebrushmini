@@ -6,7 +6,7 @@ import { ReactSketchCanvas } from "react-sketch-canvas";
 export default function Snake(props) {
   const [boxVisible, setBoxVisible] = useState(true);
   const [torusEdges, setTorusEdges] = useState(false);
-  const [toggleCanvas, setToggleCanvas] = useState(4);
+  const [toggleCanvas, setToggleCanvas] = useState(-4);
   const drawingCanvas = useRef();
   // This reference will give us direct access to the mesh
   // Set up state for the hovered and active state
@@ -95,7 +95,11 @@ export default function Snake(props) {
               color="black"
             />
           </Box>
-
+          <gridHelper
+            args={[10, 10]}
+            position={[0, -3, 0]}
+            rotation={[0, Math.PI / 4, 0]}
+          ></gridHelper>
           <OrbitControls />
         </Canvas>
       </div>

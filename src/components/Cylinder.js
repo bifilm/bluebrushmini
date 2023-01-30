@@ -1,11 +1,11 @@
 import React, { useState, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
-import { Edges, OrbitControls } from "@react-three/drei";
+import { Edges, OrbitControls, Grid } from "@react-three/drei";
 import { ReactSketchCanvas } from "react-sketch-canvas";
 
 export default function Cylinder(props) {
   const [cylinderVisible, setCylinderVisible] = useState(true);
-  const [toggleCanvas, setToggleCanvas] = useState(4);
+  const [toggleCanvas, setToggleCanvas] = useState(-4);
   const drawingCanvas2 = useRef();
   // This reference will give us direct access to the mesh
   // Set up state for the hovered and active state
@@ -78,6 +78,11 @@ export default function Cylinder(props) {
             )}
           </group>
           <OrbitControls />
+          <gridHelper
+            args={[10, 10]}
+            position={[0, -3, 0]}
+            rotation={[0, Math.PI / 4, 0]}
+          ></gridHelper>
         </Canvas>
       </div>
     </div>
