@@ -24,7 +24,11 @@ export default function Cylinder(props) {
           <pointLight position={[10, 10, 10]} />
           <mesh>
             <boxGeometry args={[2, 5, 0.06]} />
-            <meshStandardMaterial color={"grey"} />
+            <meshStandardMaterial
+              color={"grey"}
+              transparent={true}
+              opacity={0.5}
+            />
             <Edges
               scale={1}
               threshold={80} // Display edges only when the angle between two faces exceeds this value (default=15 degrees)
