@@ -11,9 +11,13 @@ export default function Cylinder(props) {
   // Set up state for the hovered and active state
   // Subscribe this component to the render-loop, rotate the mesh every frame
   // Return view, these are regular three.js elements expressed in JSX
-
+  const onKeyPressed = (e) => {
+    if (e.key === " ") {
+      setToggleCanvas(toggleCanvas * -1);
+    }
+  };
   return (
-    <div style={{ height: "100%" }}>
+    <div style={{ height: "100%" }} tabIndex={0} onKeyDown={onKeyPressed}>
       <button
         onClick={() => {
           drawingCanvas2.current.clearCanvas();
