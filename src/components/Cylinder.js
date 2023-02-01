@@ -17,7 +17,7 @@ export default function Cylinder(props) {
     }
   };
   return (
-    <div style={{ height: "100%" }} tabIndex={0} onKeyDown={onKeyPressed}>
+    <div style={{ height: "90%" }} tabIndex={0} onKeyDown={onKeyPressed}>
       <button
         onClick={() => {
           drawingCanvas2.current.clearCanvas();
