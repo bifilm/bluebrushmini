@@ -15,6 +15,12 @@ export default function Cylinder(props) {
     if (e.key === " ") {
       setToggleCanvas(toggleCanvas * -1);
     }
+    if (e.key === "a") {
+      setCylinderVisible(!cylinderVisible);
+    }
+    if (e.key === "d") {
+      drawingCanvas2.current.clearCanvas();
+    }
   };
   return (
     <div style={{ height: "90%" }} tabIndex={0} onKeyDown={onKeyPressed}>
@@ -23,7 +29,7 @@ export default function Cylinder(props) {
           drawingCanvas2.current.clearCanvas();
         }}
       >
-        Clear Canvas
+        Clear Canvas (d)
       </button>
       <button
         onClick={() => {
@@ -31,14 +37,14 @@ export default function Cylinder(props) {
           console.log(toggleCanvas);
         }}
       >
-        Toggle which canvas
+        Toggle which canvas (spacebar)
       </button>
       <button
         onClick={() => {
           setCylinderVisible(!cylinderVisible);
         }}
       >
-        HIDE OR SHOW CYLINDER
+        HIDE OR SHOW CYLINDER (a)
       </button>
       <div style={{ height: "100%", position: "relative" }}>
         <ReactSketchCanvas
