@@ -46,6 +46,7 @@ export default function Cylinder(props) {
       >
         HIDE OR SHOW CYLINDER (a)
       </button>
+      <span> if negative 3d canvas on top: {toggleCanvas}</span>
       <div style={{ height: "100%", position: "relative" }}>
         <ReactSketchCanvas
           style={{ position: "absolute", zIndex: toggleCanvas }}
