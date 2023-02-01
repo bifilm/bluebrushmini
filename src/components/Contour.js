@@ -1,9 +1,9 @@
 import React, { useState, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
-import { Edges, OrbitControls, Grid, Line } from "@react-three/drei";
+import { Edges, OrbitControls, Grid } from "@react-three/drei";
 import { ReactSketchCanvas } from "react-sketch-canvas";
 
-export default function Cylinder(props) {
+export default function Contour(props) {
   const [cylinderVisible, setCylinderVisible] = useState(true);
   const [toggleCanvas, setToggleCanvas] = useState(-4);
   const drawingCanvas2 = useRef();
@@ -83,14 +83,6 @@ export default function Cylinder(props) {
             position={[0, -3, 0]}
             rotation={[0, Math.PI / 4, 0]}
           ></gridHelper>
-          <Line
-            points={[
-              [0, -20, 0],
-              [0, 20, 0],
-            ]} // Array of points, Array<Vector3 | Vector2 | [number, number, number] | [number, number] | number>
-            color="black" // Default
-            lineWidth={1} // In pixels (default)
-          />
         </Canvas>
       </div>
     </div>
