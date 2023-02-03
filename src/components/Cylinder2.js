@@ -1,19 +1,21 @@
 import React, { useState, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
-import { Edges, OrbitControls, Grid, Line } from "@react-three/drei";
+import { Edges, OrbitControls, Line } from "@react-three/drei";
 import { ReactSketchCanvas } from "react-sketch-canvas";
 
-export default function Cylinder(props) {
+export default function Cylinder2(props) {
   const [cylinderVisible, setCylinderVisible] = useState(true);
   const [toggleCanvas, setToggleCanvas] = useState(-4);
   const drawingCanvas2 = useRef();
+  const [rotation, setRotation] = useState(0);
+  const height = 2;
   // This reference will give us direct access to the mesh
   // Set up state for the hovered and active state
   // Subscribe this component to the render-loop, rotate the mesh every frame
   // Return view, these are regular three.js elements expressed in JSX
   const onKeyPressed = (e) => {
     if (e.key === " ") {
-      setToggleCanvas(toggleCanvas * -1);
+      setRotation(Math.random() * 3);
     }
     if (e.key === "a") {
       setCylinderVisible(!cylinderVisible);
@@ -33,11 +35,10 @@ export default function Cylinder(props) {
       </button>
       <button
         onClick={() => {
-          setToggleCanvas(toggleCanvas * -1);
-          console.log(toggleCanvas);
+          setRotation(Math.random() * 3);
         }}
       >
-        Toggle which canvas (spacebar)
+        Rotate cylinder (spacebar)
       </button>
       <button
         onClick={() => {
@@ -56,11 +57,11 @@ export default function Cylinder(props) {
           canvasColor="transparent"
         />
         <Canvas style={{ borderStyle: "solid" }}>
-          <group>
+          <group rotation={[rotation, 0, 0]}>
             <ambientLight />
             <pointLight position={[10, 10, 10]} />
             <mesh>
-              <boxGeometry args={[2, 5, 0.06]} />
+              <boxGeometry args={[2, height, 0.06]} />
               <meshStandardMaterial
                 color={"grey"}
                 transparent={true}
@@ -74,7 +75,7 @@ export default function Cylinder(props) {
             </mesh>
             {cylinderVisible && (
               <mesh>
-                <cylinderGeometry args={[1, 1, 5]} />
+                <cylinderGeometry args={[1, 1, height]} />
                 <meshStandardMaterial
                   color={"blue"}
                   transparent={true}
@@ -88,10 +89,9 @@ export default function Cylinder(props) {
               </mesh>
             )}
           </group>
-          <OrbitControls />
           <gridHelper
             args={[10, 10]}
-            position={[0, -3, 0]}
+            position={[0, -1.5, 0]}
             rotation={[0, Math.PI / 4, 0]}
           ></gridHelper>
           <Line

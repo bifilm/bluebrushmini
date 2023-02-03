@@ -3,6 +3,7 @@ import Cylinder from "./components/Cylinder";
 import Snake from "./components/Snake";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Contour from "./components/Contour";
+import Cylinder2 from "./components/Cylinder2";
 function App() {
   const padding = {
     padding: 5,
@@ -12,6 +13,9 @@ function App() {
       <div>
         <Link style={padding} to="/cylinder">
           cylinder
+        </Link>
+        <Link style={padding} to="/cylinder2">
+          Cylinder2
         </Link>
         <Link style={padding} to="/snake">
           snake
@@ -25,6 +29,7 @@ function App() {
       </div>
       <Routes>
         <Route path="/cylinder" element={<Cylinder />} />
+        <Route path="/cylinder2" element={<Cylinder2 />} />
         <Route path="/snake" element={<Snake />} />
         {/* <Route path="/contour" element={<Contour />} /> */}
       </Routes>
