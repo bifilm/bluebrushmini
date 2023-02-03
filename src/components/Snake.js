@@ -4,7 +4,7 @@ import { Edges, Box, OrbitControls, TorusKnot } from "@react-three/drei";
 import { ReactSketchCanvas } from "react-sketch-canvas";
 
 export default function Snake(props) {
-  const [boxVisible, setBoxVisible] = useState(true);
+  const [boxVisible, setBoxVisible] = useState(-1);
   const [torusEdges, setTorusEdges] = useState(false);
   const [toggleCanvas, setToggleCanvas] = useState(-4);
   const drawingCanvas = useRef();
@@ -18,7 +18,7 @@ export default function Snake(props) {
     <div style={{ height: "90%" }}>
       <button
         onClick={() => {
-          setBoxVisible(!boxVisible);
+          setBoxVisible(-1 * boxVisible);
         }}
       >
         Hide or show cross sections
@@ -79,8 +79,8 @@ export default function Snake(props) {
           >
             <meshStandardMaterial
               color="red"
-              transparent={boxVisible}
-              opacity={0.0}
+              transparent={true}
+              opacity={boxVisible}
               alphaTest={0.5}
             />
             <Edges
@@ -96,8 +96,8 @@ export default function Snake(props) {
           >
             <meshStandardMaterial
               color="red"
-              transparent={boxVisible}
-              opacity={0.0}
+              transparent={true}
+              opacity={boxVisible}
               alphaTest={0.5}
             />
             <Edges
@@ -113,8 +113,8 @@ export default function Snake(props) {
           >
             <meshStandardMaterial
               color="blue"
-              transparent={boxVisible}
-              opacity={0.0}
+              transparent={true}
+              opacity={boxVisible}
               alphaTest={0.5}
             />
             <Edges
@@ -131,8 +131,8 @@ export default function Snake(props) {
           >
             <meshStandardMaterial
               color="blue"
-              transparent={boxVisible}
-              opacity={0.0}
+              transparent={true}
+              opacity={boxVisible}
               alphaTest={0.5}
             />
             <Edges
