@@ -16,6 +16,7 @@ export default function Cylinder2(props) {
   const onKeyPressed = (e) => {
     if (e.key === " ") {
       setRotation(Math.random() * 3);
+      drawingCanvas2.current.clearCanvas();
     }
     if (e.key === "a") {
       setCylinderVisible(!cylinderVisible);
@@ -36,6 +37,7 @@ export default function Cylinder2(props) {
       <button
         onClick={() => {
           setRotation(Math.random() * 3);
+          drawingCanvas2.current.clearCanvas();
         }}
       >
         Rotate cylinder (spacebar)
