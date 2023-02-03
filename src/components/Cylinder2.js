@@ -50,7 +50,7 @@ export default function Cylinder2(props) {
       <span> if negative 3d canvas on top: {toggleCanvas}</span>
       <div style={{ height: "100%", position: "relative" }}>
         <ReactSketchCanvas
-          style={{ position: "absolute", zIndex: toggleCanvas }}
+          style={{ position: "absolute", zIndex: 4 }}
           ref={drawingCanvas2}
           strokeWidth={1}
           strokeColor="red"
