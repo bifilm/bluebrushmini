@@ -8,6 +8,7 @@ export default function Snake(props) {
   const [torusEdges, setTorusEdges] = useState(false);
   const [toggleCanvas, setToggleCanvas] = useState(-4);
   const drawingCanvas = useRef();
+  const boxSize = 0.02;
   // This reference will give us direct access to the mesh
   // Set up state for the hovered and active state
   // Subscribe this component to the render-loop, rotate the mesh every frame
@@ -72,14 +73,15 @@ export default function Snake(props) {
           </TorusKnot>
 
           <Box
-            args={[1.25, 1.25, 0.002]}
+            args={[1.25, 1.25, boxSize]}
             position={[0, 1, 0]}
             rotation={[0, Math.PI / 6, 0]}
           >
             <meshStandardMaterial
               color="red"
               transparent={boxVisible}
-              opacity={0}
+              opacity={0.0}
+              alphaTest={0.5}
             />
             <Edges
               scale={1}
@@ -88,7 +90,7 @@ export default function Snake(props) {
             />
           </Box>
           <Box
-            args={[1.25, 1.25, 0.002]}
+            args={[1.25, 1.25, boxSize]}
             position={[0, -1, 0]}
             rotation={[0, -Math.PI / 6, 0]}
           >
@@ -96,6 +98,7 @@ export default function Snake(props) {
               color="red"
               transparent={boxVisible}
               opacity={0.0}
+              alphaTest={0.5}
             />
             <Edges
               scale={1}
@@ -104,14 +107,15 @@ export default function Snake(props) {
             />
           </Box>
           <Box
-            args={[2, 0.002, 1.3]}
+            args={[2, boxSize, 1.3]}
             position={[-3, 0, 0]}
             rotation={[-Math.PI / 6, 0, 0]}
           >
             <meshStandardMaterial
               color="blue"
               transparent={boxVisible}
-              opacity={0}
+              opacity={0.0}
+              alphaTest={0.5}
             />
             <Edges
               scale={1}
@@ -121,14 +125,15 @@ export default function Snake(props) {
           </Box>
 
           <Box
-            args={[2, 0.002, 1.3]}
+            args={[2, boxSize, 1.3]}
             position={[3, 0, 0]}
             rotation={[Math.PI / 6, 0, 0]}
           >
             <meshStandardMaterial
               color="blue"
               transparent={boxVisible}
-              opacity={0}
+              opacity={0.0}
+              alphaTest={0.5}
             />
             <Edges
               scale={1}
