@@ -14,7 +14,7 @@ export default function Snake(props) {
   // Return view, these are regular three.js elements expressed in JSX
 
   return (
-    <div style={{ height: "100%" }}>
+    <div style={{ height: "90%" }}>
       <button
         onClick={() => {
           setBoxVisible(!boxVisible);
@@ -44,9 +44,9 @@ export default function Snake(props) {
       >
         Toggle which canvas
       </button>
-      <div style={{ height: "100%", position: "relative" }}>
+      <div style={{ height: "100%", display: "flex" }}>
         <ReactSketchCanvas
-          style={{ position: "absolute", zIndex: toggleCanvas }}
+          style={{ borderStyle: "solid" }}
           ref={drawingCanvas}
           strokeWidth={1}
           strokeColor="red"
