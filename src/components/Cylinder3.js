@@ -62,7 +62,10 @@ export default function Cylinder3(props) {
           strokeColor="red"
           canvasColor="transparent"
         />
-        <Canvas style={{ borderStyle: "solid" }}>
+        <Canvas
+          style={{ borderStyle: "solid" }}
+          camera={{ position: [0, 0, 6] }}
+        >
           <group rotation={rotation}>
             <ambientLight />
             <pointLight position={[10, 10, 10]} />

@@ -55,7 +55,10 @@ export default function Cylinder(props) {
           strokeColor="red"
           canvasColor="transparent"
         />
-        <Canvas style={{ borderStyle: "solid" }}>
+        <Canvas
+          style={{ borderStyle: "solid" }}
+          camera={{ position: [0, 0, 6.4] }}
+        >
           <group>
             <ambientLight />
             <pointLight position={[10, 10, 10]} />
