@@ -13,13 +13,13 @@ function App() {
     <Router>
       <div>
         <Link style={padding} to="/cylinder">
-          cylinder
+          cylinderMove
         </Link>
         <Link style={padding} to="/cylinder2">
-          Cylinder2
+          Cylinder2 RandomY
         </Link>
         <Link style={padding} to="/cylinder3">
-          Cylinder3
+          Cylinder3, RandomXYZ
         </Link>
         <Link style={padding} to="/snake">
           snake
