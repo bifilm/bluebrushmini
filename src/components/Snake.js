@@ -74,7 +74,7 @@ export default function Snake(props) {
 
           <Box
             args={[1.25, 1.25, boxSize]}
-            position={[0, 1, 0]}
+            position={[0, 2.3, 0]}
             rotation={[0, Math.PI / 6, 0]}
           >
             <meshStandardMaterial
@@ -87,11 +87,12 @@ export default function Snake(props) {
               scale={1}
               threshold={80} // Display edges only when the angle between two faces exceeds this value (default=15 degrees)
               color="black"
+              depthTest={false}
             />
           </Box>
           <Box
             args={[1.25, 1.25, boxSize]}
-            position={[0, -1, 0]}
+            position={[0, -2.3, 0]}
             rotation={[0, -Math.PI / 6, 0]}
           >
             <meshStandardMaterial
@@ -104,11 +105,12 @@ export default function Snake(props) {
               scale={1}
               threshold={80} // Display edges only when the angle between two faces exceeds this value (default=15 degrees)
               color="black"
+              depthTest={false}
             />
           </Box>
           <Box
             args={[2, boxSize, 1.3]}
-            position={[-3, 0, 0]}
+            position={[-4.7, 0, 0]}
             rotation={[-Math.PI / 6, 0, 0]}
           >
             <meshStandardMaterial
@@ -121,12 +123,13 @@ export default function Snake(props) {
               scale={1}
               threshold={80} // Display edges only when the angle between two faces exceeds this value (default=15 degrees)
               color="black"
+              depthTest={false}
             />
           </Box>
 
           <Box
             args={[2, boxSize, 1.3]}
-            position={[3, 0, 0]}
+            position={[4.7, 0, 0]}
             rotation={[Math.PI / 6, 0, 0]}
           >
             <meshStandardMaterial
@@ -139,6 +142,7 @@ export default function Snake(props) {
               scale={1}
               threshold={80} // Display edges only when the angle between two faces exceeds this value (default=15 degrees)
               color="black"
+              depthTest={false}
             />
           </Box>
 
