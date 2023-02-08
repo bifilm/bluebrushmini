@@ -16,10 +16,10 @@ function App() {
           cylinderMove
         </Link>
         <Link style={padding} to="/cylinder2">
-          Cylinder2 RandomY
+          Cylinder2RandomY
         </Link>
         <Link style={padding} to="/cylinder3">
-          Cylinder3, RandomXYZ
+          Cylinder3RandomXYZ
         </Link>
         <Link style={padding} to="/snake">
           snake
