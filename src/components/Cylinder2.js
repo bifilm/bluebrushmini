@@ -1,13 +1,28 @@
 import React, { useState, useRef } from "react";
-import { Canvas } from "@react-three/fiber";
-import { Edges, OrbitControls, Line } from "@react-three/drei";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Edges, Line } from "@react-three/drei";
 import { ReactSketchCanvas } from "react-sketch-canvas";
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
 
 export default function Cylinder2(props) {
   const [cylinderVisible, setCylinderVisible] = useState(true);
   const [toggleCanvas, setToggleCanvas] = useState(-4);
   const drawingCanvas2 = useRef();
+  const [canvasState, setCanvasState] = useState(null);
   const [rotation, setRotation] = useState(0);
+  const [fov, setFov] = useState(90);
+  const [distance, setDistance] = useState(10);
+
+  function Environment() {
+    useFrame((state) => {
+      state.camera.fov = fov;
+      state.camera.position.z = distance;
+      state.camera.updateProjectionMatrix();
+    });
+    return null;
+  }
+
   const height = 2;
   // This reference will give us direct access to the mesh
   // Set up state for the hovered and active state
@@ -26,7 +41,31 @@ export default function Cylinder2(props) {
     }
   };
   return (
-    <div style={{ height: "90%" }} tabIndex={0} onKeyDown={onKeyPressed}>
+    <div style={{ height: "80%" }} tabIndex={0} onKeyDown={onKeyPressed}>
+      <span>Set distance</span>
+      <span> {distance}</span>
+      <Slider
+        style={{ width: "200px", marginLeft: "10px" }}
+        onChange={(nextValues) => {
+          setDistance(nextValues);
+        }}
+        min={0}
+        max={30}
+        defaultValue={10}
+        step={0.01}
+      />
+      <span>Set fov</span>
+      <span> {fov}</span>
+      <Slider
+        style={{ width: "400px", marginLeft: "10px" }}
+        onChange={(nextValues) => {
+          setFov(nextValues);
+        }}
+        min={0}
+        max={150}
+        defaultValue={90}
+        step={1}
+      />
       <button
         onClick={() => {
           drawingCanvas2.current.clearCanvas();
@@ -60,8 +99,10 @@ export default function Cylinder2(props) {
         />
         <Canvas
           style={{ borderStyle: "solid" }}
-          camera={{ position: [0, 0, 6] }}
+          camera={{ position: [0, 0, 10], fov: fov }}
+          onCreated={setCanvasState}
         >
+          <Environment />
           <group rotation={[rotation, 0, 0]}>
             <ambientLight />
             <pointLight position={[10, 10, 10]} />
