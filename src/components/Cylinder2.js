@@ -7,9 +7,7 @@ import "rc-slider/assets/index.css";
 
 export default function Cylinder2(props) {
   const [cylinderVisible, setCylinderVisible] = useState(true);
-  const [toggleCanvas, setToggleCanvas] = useState(-4);
   const drawingCanvas2 = useRef();
-  const [canvasState, setCanvasState] = useState(null);
   const [rotation, setRotation] = useState(0);
   const [fov, setFov] = useState(90);
   const [distance, setDistance] = useState(10);
@@ -88,7 +86,6 @@ export default function Cylinder2(props) {
       >
         HIDE OR SHOW CYLINDER (a)
       </button>
-      <span> if negative 3d canvas on top: {toggleCanvas}</span>
       <div style={{ height: "100%", position: "relative" }}>
         <ReactSketchCanvas
           style={{ position: "absolute", zIndex: 4 }}
@@ -100,7 +97,6 @@ export default function Cylinder2(props) {
         <Canvas
           style={{ borderStyle: "solid" }}
           camera={{ position: [0, 0, 10], fov: fov }}
-          onCreated={setCanvasState}
         >
           <Environment />
           <group rotation={[rotation, 0, 0]}>
