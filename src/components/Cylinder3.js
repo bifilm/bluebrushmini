@@ -112,7 +112,7 @@ export default function Cylinder3(props) {
               <meshStandardMaterial
                 color={"grey"}
                 transparent={true}
-                opacity={0.5}
+                opacity={1}
               />
               <Edges
                 scale={1}
@@ -149,7 +149,7 @@ export default function Cylinder3(props) {
             <meshStandardMaterial
               color={"blue"}
               transparent={true}
-              opacity={0.7}
+              opacity={1}
             />
             <Edges
               scale={1}
