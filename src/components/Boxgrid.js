@@ -4,6 +4,7 @@ import { Edges, Line } from "@react-three/drei";
 import { ReactSketchCanvas } from "react-sketch-canvas";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
+import Box from "./Box";
 
 export default function Boxgrid(props) {
   const [cylinderVisible, setCylinderVisible] = useState(true);
@@ -87,13 +88,13 @@ export default function Boxgrid(props) {
         HIDE OR SHOW CYLINDER (a)
       </button>
       <div style={{ height: "100%", position: "relative" }}>
-        <ReactSketchCanvas
+        {/* <ReactSketchCanvas
           style={{ position: "absolute", zIndex: 4 }}
           ref={drawingCanvas2}
           strokeWidth={1}
           strokeColor="red"
           canvasColor="transparent"
-        />
+        /> */}
         <Canvas
           style={{ borderStyle: "solid" }}
           camera={{ position: [0, 0, 10], fov: fov }}
@@ -102,36 +103,12 @@ export default function Boxgrid(props) {
           <ambientLight />
           <pointLight position={[10, 10, 10]} />
 
-          <group rotation={[rotation, 0, 0]}>
-            <mesh>
-              <boxGeometry args={[2, height, 0.06]} />
-              <meshStandardMaterial
-                color={"grey"}
-                transparent={true}
-                opacity={0.5}
-              />
-              <Edges
-                scale={1}
-                threshold={80} // Display edges only when the angle between two faces exceeds this value (default=15 degrees)
-                color="black"
-              />
-            </mesh>
-            {cylinderVisible && (
-              <mesh>
-                <cylinderGeometry args={[1, 1, height]} />
-                <meshStandardMaterial
-                  color={"blue"}
-                  transparent={true}
-                  opacity={0.7}
-                />
-                <Edges
-                  scale={1}
-                  threshold={80} // Display edges only when the angle between two faces exceeds this value (default=15 degrees)
-                  color="black"
-                />
-              </mesh>
-            )}
-          </group>
+          <Box
+            initialBoxVisibility={false}
+            positionArray={[0, 0, 1]}
+            rotationArray={[0, 2, 2]}
+          />
+
           <gridHelper
             args={[10, 10]}
             position={[0, -1.5, 0]}
