@@ -144,6 +144,19 @@ export default function Cylinder3(props) {
               lineWidth={1} // In pixels (default)
             />
           </group>
+          <mesh position={[3.5, 3, 0]}>
+            <cylinderGeometry args={[1, 1, height]} />
+            <meshStandardMaterial
+              color={"blue"}
+              transparent={true}
+              opacity={0.7}
+            />
+            <Edges
+              scale={1}
+              threshold={80} // Display edges only when the angle between two faces exceeds this value (default=15 degrees)
+              color="black"
+            />
+          </mesh>
           <gridHelper
             args={[10, 10]}
             position={[0, -1.5, 0]}
