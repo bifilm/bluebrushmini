@@ -18,7 +18,7 @@ export default function Box({
         <boxGeometry args={[1, 1, 1]} />
         <meshStandardMaterial
           transparent={true}
-          opacity={boxVis ? 0.4 : 0}
+          opacity={boxVis ? 0.45 : 0}
           color="red"
         />
         {boxVis && (
