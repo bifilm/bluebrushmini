@@ -17,14 +17,16 @@ export default function Boxgrid(props) {
   const [boxCount, setBoxCount] = useState(5);
   const [toggleCanvas, setToggleCanvas] = useState(-4);
 
+  let counter = 0;
   let arrayOfPositionAngles = [];
   for (let i = 0; i < boxCount; i++) {
     for (let j = 0; j < boxCount; j++) {
       arrayOfPositionAngles.push([
         [-4 + i * 2, 4 - j * 2, 0],
         [0 + rotationPerBox * j, 0 + rotationPerBox * i, 0],
-        [generateUUID()],
+        [counter],
       ]);
+      counter++;
     }
   }
   console.log(arrayOfPositionAngles);
@@ -89,8 +91,7 @@ export default function Boxgrid(props) {
       </button>
       <button
         onClick={() => {
-          setRotation(Math.random() * 3);
-          drawingCanvas2.current.clearCanvas();
+          setToggleCanvas(toggleCanvas * -1);
         }}
       >
         Focus Canvas or not (spacebar)
