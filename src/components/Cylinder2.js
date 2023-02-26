@@ -9,8 +9,8 @@ export default function Cylinder2(props) {
   const [cylinderVisible, setCylinderVisible] = useState(true);
   const drawingCanvas2 = useRef();
   const [rotation, setRotation] = useState(0);
-  const [fov, setFov] = useState(90);
-  const [distance, setDistance] = useState(10);
+  const [fov, setFov] = useState(37);
+  const [distance, setDistance] = useState(15);
 
   function Environment() {
     useFrame((state) => {
@@ -49,7 +49,7 @@ export default function Cylinder2(props) {
         }}
         min={0}
         max={30}
-        defaultValue={10}
+        defaultValue={distance}
         step={0.01}
       />
       <span>Set fov</span>
@@ -61,7 +61,7 @@ export default function Cylinder2(props) {
         }}
         min={0}
         max={150}
-        defaultValue={90}
+        defaultValue={fov}
         step={1}
       />
       <button

@@ -5,17 +5,29 @@ import { ReactSketchCanvas } from "react-sketch-canvas";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import Box from "./Box";
+import { generateUUID } from "three/src/math/MathUtils";
 
 export default function Boxgrid(props) {
   const [cylinderVisible, setCylinderVisible] = useState(true);
   const drawingCanvas2 = useRef();
   const [rotation, setRotation] = useState(0);
-  const [fov, setFov] = useState(90);
-  const [distance, setDistance] = useState(10);
-  const [distanceBetweenBoxes, setDistanceBetweenBoxes] = useState(3);
-  const [rotationPerBox, setRotationPerBox] = useState(30);
+  const [fov, setFov] = useState(37);
+  const [distance, setDistance] = useState(15);
+  const [rotationPerBox, setRotationPerBox] = useState(0.4);
   const [boxCount, setBoxCount] = useState(5);
   const [toggleCanvas, setToggleCanvas] = useState(-4);
+
+  let arrayOfPositionAngles = [];
+  for (let i = 0; i < boxCount; i++) {
+    for (let j = 0; j < boxCount; j++) {
+      arrayOfPositionAngles.push([
+        [-4 + i * 2, 4 - j * 2, 0],
+        [0 + rotationPerBox * j, 0 + rotationPerBox * i, 0],
+        [generateUUID()],
+      ]);
+    }
+  }
+  console.log(arrayOfPositionAngles);
 
   function Environment() {
     useFrame((state) => {
@@ -53,7 +65,7 @@ export default function Boxgrid(props) {
         }}
         min={0}
         max={30}
-        defaultValue={10}
+        defaultValue={distance}
         step={0.01}
       />
       <span>Set fov</span>
@@ -65,7 +77,7 @@ export default function Boxgrid(props) {
         }}
         min={0}
         max={150}
-        defaultValue={90}
+        defaultValue={fov}
         step={1}
       />
       <button
@@ -118,10 +130,19 @@ export default function Boxgrid(props) {
           <pointLight position={[10, 10, 10]} />
 
           <Box
-            initialBoxVisibility={false}
-            positionArray={[0, 0, 1]}
-            rotationArray={[0, 2, 2]}
+            initialBoxVisibility={true}
+            positionArray={[-4, 4, 0]}
+            rotationArray={[0, 0, 0]}
           />
+
+          {arrayOfPositionAngles.map((arr) => (
+            <Box
+              key={arr[2]}
+              positionArray={arr[0]}
+              rotationArray={arr[1]}
+              initialBoxVisibility={true}
+            />
+          ))}
 
           <gridHelper
             args={[10, 10]}

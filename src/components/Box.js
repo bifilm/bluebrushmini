@@ -16,7 +16,11 @@ export default function Box({
         }}
       >
         <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial transparent={true} opacity={0} color="red" />
+        <meshStandardMaterial
+          transparent={true}
+          opacity={boxVis ? 0.4 : 0}
+          color="red"
+        />
         {boxVis && (
           <Edges
             scale={1}

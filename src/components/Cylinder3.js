@@ -10,8 +10,8 @@ export default function Cylinder3(props) {
   const [toggleCanvas, setToggleCanvas] = useState(-4);
   const drawingCanvas2 = useRef();
   const [rotation, setRotation] = useState([0, 0, 0]);
-  const [fov, setFov] = useState(90);
-  const [distance, setDistance] = useState(10);
+  const [fov, setFov] = useState(37);
+  const [distance, setDistance] = useState(15);
   const height = 2;
   // This reference will give us direct access to the mesh
   // Set up state for the hovered and active state
@@ -49,7 +49,7 @@ export default function Cylinder3(props) {
         }}
         min={0}
         max={30}
-        defaultValue={10}
+        defaultValue={distance}
         step={0.01}
       />
       <span>Set fov</span>
@@ -61,7 +61,7 @@ export default function Cylinder3(props) {
         }}
         min={0}
         max={150}
-        defaultValue={90}
+        defaultValue={fov}
         step={1}
       />
       <button
@@ -90,7 +90,7 @@ export default function Cylinder3(props) {
       >
         HIDE OR SHOW CYLINDER (a)
       </button>
-      <span> if negative 3d canvas on top: {toggleCanvas}</span>
+
       <div style={{ height: "100%", position: "relative" }}>
         <ReactSketchCanvas
           style={{ position: "absolute", zIndex: 4 }}
