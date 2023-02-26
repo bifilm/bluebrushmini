@@ -107,7 +107,7 @@ export default function Cylinder2(props) {
               <meshStandardMaterial
                 color={"grey"}
                 transparent={true}
-                opacity={0.5}
+                opacity={1}
               />
               <Edges
                 scale={1}
