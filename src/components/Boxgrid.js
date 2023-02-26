@@ -12,6 +12,10 @@ export default function Boxgrid(props) {
   const [rotation, setRotation] = useState(0);
   const [fov, setFov] = useState(90);
   const [distance, setDistance] = useState(10);
+  const [distanceBetweenBoxes, setDistanceBetweenBoxes] = useState(3);
+  const [rotationPerBox, setRotationPerBox] = useState(30);
+  const [boxCount, setBoxCount] = useState(5);
+  const [toggleCanvas, setToggleCanvas] = useState(-4);
 
   function Environment() {
     useFrame((state) => {
@@ -29,8 +33,7 @@ export default function Boxgrid(props) {
   // Return view, these are regular three.js elements expressed in JSX
   const onKeyPressed = (e) => {
     if (e.key === " ") {
-      setRotation(Math.random() * 3);
-      drawingCanvas2.current.clearCanvas();
+      setToggleCanvas(toggleCanvas * -1);
     }
     if (e.key === "a") {
       setCylinderVisible(!cylinderVisible);
@@ -78,8 +81,9 @@ export default function Boxgrid(props) {
           drawingCanvas2.current.clearCanvas();
         }}
       >
-        Rotate cylinder (spacebar)
+        Focus Canvas or not (spacebar)
       </button>
+
       <button
         onClick={() => {
           setCylinderVisible(!cylinderVisible);
@@ -87,14 +91,24 @@ export default function Boxgrid(props) {
       >
         HIDE OR SHOW CYLINDER (a)
       </button>
+      <span
+        style={{
+          color: "white",
+          background: `rgb(${toggleCanvas * 600},${toggleCanvas * 600},${
+            toggleCanvas * 600
+          })`,
+        }}
+      >
+        Drawing mode off
+      </span>
       <div style={{ height: "100%", position: "relative" }}>
-        {/* <ReactSketchCanvas
-          style={{ position: "absolute", zIndex: 4 }}
+        <ReactSketchCanvas
+          style={{ position: "absolute", zIndex: toggleCanvas }}
           ref={drawingCanvas2}
           strokeWidth={1}
           strokeColor="red"
           canvasColor="transparent"
-        /> */}
+        />
         <Canvas
           style={{ borderStyle: "solid" }}
           camera={{ position: [0, 0, 10], fov: fov }}
