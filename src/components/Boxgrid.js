@@ -1,22 +1,16 @@
 import React, { useState, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Edges, OrbitControls, Line } from "@react-three/drei";
+import { Edges, Line } from "@react-three/drei";
 import { ReactSketchCanvas } from "react-sketch-canvas";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 
-export default function Cylinder3(props) {
+export default function Boxgrid(props) {
   const [cylinderVisible, setCylinderVisible] = useState(true);
-  const [toggleCanvas, setToggleCanvas] = useState(-4);
   const drawingCanvas2 = useRef();
-  const [rotation, setRotation] = useState([0, 0, 0]);
+  const [rotation, setRotation] = useState(0);
   const [fov, setFov] = useState(90);
   const [distance, setDistance] = useState(10);
-  const height = 2;
-  // This reference will give us direct access to the mesh
-  // Set up state for the hovered and active state
-  // Subscribe this component to the render-loop, rotate the mesh every frame
-  // Return view, these are regular three.js elements expressed in JSX
 
   function Environment() {
     useFrame((state) => {
@@ -26,9 +20,15 @@ export default function Cylinder3(props) {
     });
     return null;
   }
+
+  const height = 2;
+  // This reference will give us direct access to the mesh
+  // Set up state for the hovered and active state
+  // Subscribe this component to the render-loop, rotate the mesh every frame
+  // Return view, these are regular three.js elements expressed in JSX
   const onKeyPressed = (e) => {
     if (e.key === " ") {
-      setRotation([Math.random() * 3, Math.random() * 3, Math.random() * 3]);
+      setRotation(Math.random() * 3);
       drawingCanvas2.current.clearCanvas();
     }
     if (e.key === "a") {
@@ -73,11 +73,7 @@ export default function Cylinder3(props) {
       </button>
       <button
         onClick={() => {
-          setRotation([
-            Math.random() * 3,
-            Math.random() * 3,
-            Math.random() * 3,
-          ]);
+          setRotation(Math.random() * 3);
           drawingCanvas2.current.clearCanvas();
         }}
       >
@@ -90,7 +86,6 @@ export default function Cylinder3(props) {
       >
         HIDE OR SHOW CYLINDER (a)
       </button>
-      <span> if negative 3d canvas on top: {toggleCanvas}</span>
       <div style={{ height: "100%", position: "relative" }}>
         <ReactSketchCanvas
           style={{ position: "absolute", zIndex: 4 }}
@@ -101,12 +96,13 @@ export default function Cylinder3(props) {
         />
         <Canvas
           style={{ borderStyle: "solid" }}
-          camera={{ position: [0, 0, 6] }}
+          camera={{ position: [0, 0, 10], fov: fov }}
         >
           <Environment />
-          <group rotation={rotation}>
-            <ambientLight />
-            <pointLight position={[10, 10, 10]} />
+          <ambientLight />
+          <pointLight position={[10, 10, 10]} />
+
+          <group rotation={[rotation, 0, 0]}>
             <mesh>
               <boxGeometry args={[2, height, 0.06]} />
               <meshStandardMaterial
@@ -135,14 +131,6 @@ export default function Cylinder3(props) {
                 />
               </mesh>
             )}
-            <Line
-              points={[
-                [0, -20, 0],
-                [0, 20, 0],
-              ]} // Array of points, Array<Vector3 | Vector2 | [number, number, number] | [number, number] | number>
-              color="black" // Default
-              lineWidth={1} // In pixels (default)
-            />
           </group>
           <gridHelper
             args={[10, 10]}
