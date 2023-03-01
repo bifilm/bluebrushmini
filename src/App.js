@@ -6,6 +6,7 @@ import Contour from "./components/Contour";
 import Cylinder2 from "./components/Cylinder2";
 import Cylinder3 from "./components/Cylinder3";
 import Boxgrid from "./components/Boxgrid";
+import FlourSackGrid from "./components/FlourSackGrid";
 function App() {
   const padding = {
     padding: 5,
@@ -25,12 +26,19 @@ function App() {
         <Link style={padding} to="/boxgrid">
           Box grid
         </Link>
+        <Link style={padding} to="/floursack">
+          flour sack grid
+        </Link>
         <Link style={padding} to="/snake">
           snake
+        </Link>
+        <Link style={padding} to="https://floating-peak-47388.herokuapp.com/">
+          To accuracy checker
         </Link>
         <Link style={padding} to="/contour">
           Contour
         </Link>
+
         <Link style={padding} to="https://floating-peak-47388.herokuapp.com/">
           To accuracy checker
         </Link>
@@ -41,6 +49,7 @@ function App() {
         <Route path="/cylinder3" element={<Cylinder3 />} />
         <Route path="/snake" element={<Snake />} />
         <Route path="/boxgrid" element={<Boxgrid />} />
+        <Route path="/floursack" element={<FlourSackGrid />} />
         {/* <Route path="/contour" element={<Contour />} /> */}
       </Routes>
     </Router>
