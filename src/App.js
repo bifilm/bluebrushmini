@@ -32,9 +32,6 @@ function App() {
         <Link style={padding} to="/snake">
           snake
         </Link>
-        <Link style={padding} to="https://floating-peak-47388.herokuapp.com/">
-          To accuracy checker
-        </Link>
         <Link style={padding} to="/contour">
           Contour
         </Link>
