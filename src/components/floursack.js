@@ -1,4 +1,4 @@
-import Shine_Sprite from "../assets/Shine_Sprite.gltf";
+import FLOURSACK1 from "../assets/FLOURSACK1.gltf";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useLoader } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
@@ -11,10 +11,9 @@ export default function FlourSack({
   positionArray,
   rotationArray,
 }) {
-  const { nodes, materials } = useGLTF(Shine_Sprite);
-  console.log(nodes.Shine_Sprite.children[0].geometry);
+  const { nodes, materials } = useGLTF(FLOURSACK1);
   //get bounding box of the geometry
-  const box = new THREE.Box3().setFromObject(nodes.Shine_Sprite.children[0]);
+  const box = new THREE.Box3().setFromObject(nodes.Body1);
   const size = new THREE.Vector3();
   box.getSize(size);
 
@@ -25,8 +24,9 @@ export default function FlourSack({
       <mesh>
         {flourSackVisiibility && (
           <mesh
-            geometry={nodes.Shine_Sprite.children[0].geometry}
+            geometry={nodes.Body1.geometry}
             material={materials.material}
+            rotation={[0, -1.5708, 0]}
           >
             <meshStandardMaterial color="green" />
           </mesh>
@@ -37,6 +37,7 @@ export default function FlourSack({
             console.log(flourSackVisiibility);
             console.log("here");
           }}
+          rotation={[0, -1.5708, 0]}
         >
           <boxGeometry args={[size.x, size.y, size.z]} />
           <meshStandardMaterial transparent={true} opacity={0} />
